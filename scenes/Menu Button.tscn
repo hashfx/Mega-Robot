@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Menu Button.gd" type="Script" id=1]
+
+[node name="Menu Button" type="Control"]
+margin_left = 2.21606
+margin_top = 56.5097
+margin_right = 181.216
+margin_bottom = 76.5097
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_right = 179.0
+margin_bottom = 20.0
+text = "MAIN  SCREEN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

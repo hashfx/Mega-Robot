@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+
+func _on_Button_pressed():
+	get_tree().change_scene(\"res://scenes/Play.tscn\")
+	
+	pass 
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0.0196078, 0.92549, 0.968627, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+bbcode_enabled = true
+bbcode_text = "                
+				      [tornado radius=10]CREDITS [/tornado]
+				
+	[wave amp=50]Engine[/wave]: 
+	[rainbow sat=2]Godot Engine[/rainbow]
+	
+	Version:
+	[rainbow sat=2]3.2.1[/rainbow]
+	
+	[shake]Developer[/shake]:
+	[rainbow sat=2][shake]HARSH SONI[/shake][/rainbow]
+	
+	Programming Language: 
+	[rainbow sat=2]GDScript, C++[/rainbow]
+	
+	Courtesy:
+	[rainbow sat=2]Angega Studios, GDQuest[/rainbow]
+"
+tab_size = 2
+text = "                
+				      CREDITS 
+				
+	Engine: 
+	Godot Engine
+	
+	Version:
+	3.2.1
+	
+	Developer:
+	HARSH SONI
+	
+	Programming Language: 
+	GDScript, C++
+	
+	Courtesy:
+	Angega Studios, GDQuest
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="RichTextLabel"]
+margin_left = 60.0
+margin_top = 280.0
+margin_right = 124.0
+margin_bottom = 300.0
+text = "Go Back"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="RichTextLabel/Button" to="." method="_on_Button_pressed"]

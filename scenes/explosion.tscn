@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/explosion.png" type="Texture" id=1]
+[ext_resource path="res://scripts/explosion.gd" type="Script" id=2]
+[ext_resource path="res://sprites/smoke.png" type="Texture" id=3]
+[ext_resource path="res://sprites/flare.png" type="Texture" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 32.0
+flag_disable_z = true
+spread = 180.0
+initial_velocity = 10.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_out"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("p_flare:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("p_smoke:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="explosion" type="Sprite"]
+z_index = 5
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="p_smoke" type="Particles2D" parent="."]
+material = SubResource( 2 )
+emitting = false
+amount = 25
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource( 4 )
+texture = ExtResource( 3 )
+
+[node name="p_flare" type="Particles2D" parent="."]
+material = SubResource( 2 )
+emitting = false
+amount = 25
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource( 4 )
+texture = ExtResource( 4 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "fade_out"
+anims/fade_out = SubResource( 3 )

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Menu Button.tscn" type="PackedScene" id=1]
+
+[node name="Credits Button" instance=ExtResource( 1 )]
+rect_rotation = -0.0932611
+scene_to_load = "res://stages/stage_menu.tscn"

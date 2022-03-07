@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/stars_far.png" type="Texture" id=1]
+[ext_resource path="res://scripts/start.gd" type="Script" id=2]
+[ext_resource path="res://sprites/stars_close.png" type="Texture" id=3]
+
+[node name="starts" type="Node"]
+
+[node name="starts_far" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="start_far_0" type="Sprite" parent="starts_far"]
+position = Vector2( 0, -180 )
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+velocity = Vector2( 0, 50 )
+
+[node name="start_far_1" type="Sprite" parent="starts_far"]
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+velocity = Vector2( 0, 50 )
+
+[node name="start_far_2" type="Sprite" parent="starts_far"]
+position = Vector2( 0, 180 )
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+velocity = Vector2( 0, 50 )
+
+[node name="starts_close" type="Node2D" parent="."]
+editor/display_folded = true
+z_index = 10
+
+[node name="start_close_0" type="Sprite" parent="starts_close"]
+position = Vector2( 0, -180 )
+texture = ExtResource( 3 )
+centered = false
+script = ExtResource( 2 )
+velocity = Vector2( 0, 100 )
+
+[node name="start_close_1" type="Sprite" parent="starts_close"]
+texture = ExtResource( 3 )
+centered = false
+script = ExtResource( 2 )
+velocity = Vector2( 0, 100 )
+
+[node name="start_close_2" type="Sprite" parent="starts_close"]
+position = Vector2( 0, 180 )
+texture = ExtResource( 3 )
+centered = false
+script = ExtResource( 2 )
+velocity = Vector2( 0, 100 )
